@@ -15,6 +15,7 @@ model Post {
   id        String     @default(cuid()) @id
   category  String
   title     String
+  author    String?
   imageUrl  String?
   comment   String?
   creator   User?   @relation(fields: [creatorId], references: [id])

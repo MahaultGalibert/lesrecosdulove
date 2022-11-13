@@ -13,11 +13,11 @@ const Header: React.FC = () => {
 
   let left = (
     <div className="left">
-      {/* <Link href="/">
+      <Link href="/">
         <a className="bold" data-active={isActive('/')}>
-          Feed
+          Accueil
         </a>
-      </Link> */}
+      </Link>
       <style jsx>{`
         .bold {
           font-weight: bold;
@@ -45,11 +45,11 @@ const Header: React.FC = () => {
   if (status === 'loading') {
     left = (
       <div className="left">
-        {/* <Link href="/">
+        <Link href="/">
           <a className="bold" data-active={isActive('/')}>
-            Feed
+            Accueil
           </a>
-        </Link> */}
+        </Link>
         <style jsx>{`
           .bold {
             font-weight: bold;
@@ -117,14 +117,14 @@ const Header: React.FC = () => {
   if (session) {
     left = (
       <div className="left">
-        {/* <Link href="/">
+        <Link href="/">
           <a className="bold" data-active={isActive('/')}>
-            Feed
+            Accueil
           </a>
         </Link>
-        <Link href="/drafts">
-          <a data-active={isActive('/drafts')}>My drafts</a>
-        </Link> */}
+        <Link href="/recos">
+          <a data-active={isActive('/recos')}>Mes recos</a>
+        </Link>
         <style jsx>{`
           .bold {
             font-weight: bold;
@@ -153,7 +153,7 @@ const Header: React.FC = () => {
         </p>
         <Link href="/create">
           <button>
-            <a>New post</a>
+            <a>Nouvelle reco</a>
           </button>
         </Link>
         <button onClick={() => signOut()}>
