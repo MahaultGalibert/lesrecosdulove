@@ -2,25 +2,24 @@ import React from "react"
 import { GetStaticProps } from "next"
 import Layout from "../components/Layout"
 import Post, { PostProps } from "../components/Post"
+// pages/index.tsx
+import prisma from '../lib/prisma';
 
+
+// index.tsx
 export const getStaticProps: GetStaticProps = async () => {
-  const feed = [
-    {
-      id: "1",
-      title: "Prisma is the perfect ORM for Next.js",
-      content: "[Prisma](https://github.com/prisma/prisma) and Next.js go _great_ together!",
-      published: false,
-      author: {
-        name: "Nikolas Burk",
-        email: "burk@prisma.io",
+  const feed = await prisma.post.findMany({
+    include: {
+      creator: {
+        select: { name: true },
       },
     },
-  ]
-  return { 
-    props: { feed }, 
-    revalidate: 10 
-  }
-}
+  });
+  return {
+    props: { feed },
+    revalidate: 10,
+  };
+};
 
 type Props = {
   feed: PostProps[]
@@ -30,28 +29,37 @@ const Blog: React.FC<Props> = (props) => {
   return (
     <Layout>
       <div className="page">
-        <h1>Public Feed</h1>
-        <main>
+      <img src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f496.svg" width="50" height="50"></img>
+        <h1>Les recos du love</h1>
+        <main id="feed-box-div">
           {props.feed.map((post) => (
-            <div key={post.id} className="post">
+            <div key={post.id} className="post-box-div">
               <Post post={post} />
             </div>
           ))}
         </main>
       </div>
       <style jsx>{`
-        .post {
+        
+        .post-box-div {
           background: white;
-          transition: box-shadow 0.1s ease-in;
+          margin: 1rem;
+          padding: 0;
+          border-style: solid;
+          border-width: 0.01rem;
+          border-color: rgb(220,220,220);
+          border-radius: 0.3rem;
+          height: 10rem;
+          width: 15rem;
+        }     
+
+        #feed-box-div {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 3rem 10rem;
+          justify-content: space-evenly;
         }
 
-        .post:hover {
-          box-shadow: 1px 1px 3px #aaa;
-        }
-
-        .post + .post {
-          margin-top: 2rem;
-        }
       `}</style>
     </Layout>
   )
