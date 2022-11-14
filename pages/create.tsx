@@ -4,7 +4,17 @@ import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import Router from 'next/router';
 
-const Reco: React.FC = () => {
+
+export type RecoProps = {
+    category: string;
+    title: string;
+    imageUrl: string;
+    author: string;
+    comment: string;
+  };
+  
+
+const Reco: React.FC<{ reco: RecoProps}> = ({ reco }) => {
   const [category, setCategory] = useState('');
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');

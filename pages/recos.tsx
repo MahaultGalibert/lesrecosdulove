@@ -60,8 +60,15 @@ const Recos: React.FC<Props> = (props) => {
       <style jsx>{`
         
         .post-box-div {
-          background: var(--geist-background);
-          transition: box-shadow 0.1s ease-in;
+          background: white;
+          margin: 1rem;
+          padding: 0;
+          border-style: solid;
+          border-width: 0.01rem;
+          border-color: rgb(220,220,220);
+          border-radius: 0.3rem;
+          height: 10rem;
+          width: 15rem;
         }
 
         #feed-box-div {
