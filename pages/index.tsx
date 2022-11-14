@@ -48,7 +48,7 @@ const Blog: React.FC<Props> = (props) => {
           border-style: solid;
           border-width: 0.01rem;
           border-color: rgb(220,220,220);
-          border-radius: 0.3rem;
+          border-radius: 0.4rem;
           height: 10rem;
           width: 15rem;
         }     
