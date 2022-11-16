@@ -1,4 +1,4 @@
-name: Build and Test lesrecosdulove
+name: CI tests lesrecosdulove
 
 # Controls when the action will run.
 on:
