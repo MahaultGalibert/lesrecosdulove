@@ -3,13 +3,13 @@ import { describe, expect, it } from "vitest"
 import { render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
 
-function App() {
-  return <div> app </div>
+function Post() {
+  return <div> Post </div>
 }
 
-describe("App", () => {
+describe("Post", () => {
   it("it should be rendered", () => {
-    render(<App />)
-    expect(screen.getByText("app")).toBeInTheDocument()
+    render(<Post />)
+    expect(screen.getByText("Post")).toBeInTheDocument()
   })
 })
