@@ -1,22 +1,20 @@
 // Header.tsx
-import React from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { signOut, useSession } from 'next-auth/react';
+import React from "react"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import { signOut, useSession } from "next-auth/react"
 
 const Header: React.FC = () => {
-  const router = useRouter();
+  const router = useRouter()
   const isActive: (pathname: string) => boolean = (pathname) =>
-    router.pathname === pathname;
+    router.pathname === pathname
 
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession()
 
   let left = (
     <div className="left">
-      <Link href="/">
-        <a className="bold" data-active={isActive('/')}>
-          Accueil
-        </a>
+      <Link className="bold" data-active={isActive("/")} href="/">
+        Accueil
       </Link>
       <style jsx>{`
         .bold {
@@ -29,26 +27,24 @@ const Header: React.FC = () => {
           display: inline-block;
         }
 
-        .left a[data-active='true'] {
-          color: gray;
+        .left a[data-active="true"] {
+          color: grey;
         }
 
-        a + a {
-          margin-left: 1rem;
+        .left {
+          color: red;
         }
       `}</style>
     </div>
-  );
+  )
 
-  let right = null;
+  let right = null
 
-  if (status === 'loading') {
+  if (status === "loading") {
     left = (
       <div className="left">
-        <Link href="/">
-          <a className="bold" data-active={isActive('/')}>
-            Accueil
-          </a>
+        <Link className="bold" data-active={isActive("/")} href="/">
+          Accueil
         </Link>
         <style jsx>{`
           .bold {
@@ -61,7 +57,7 @@ const Header: React.FC = () => {
             display: inline-block;
           }
 
-          .left a[data-active='true'] {
+          .left a[data-active="true"] {
             color: gray;
           }
 
@@ -70,7 +66,7 @@ const Header: React.FC = () => {
           }
         `}</style>
       </div>
-    );
+    )
     right = (
       <div className="right">
         <p>Validating session ...</p>
@@ -80,14 +76,14 @@ const Header: React.FC = () => {
           }
         `}</style>
       </div>
-    );
+    )
   }
 
   if (!session) {
     right = (
       <div className="right">
-        <Link href="/api/auth/signin">
-          <a data-active={isActive('/signup')}>Log in</a>
+        <Link data-active={isActive("/signup")} href="/api/auth/signin">
+          Log in
         </Link>
         <style jsx>{`
           a {
@@ -111,19 +107,17 @@ const Header: React.FC = () => {
           }
         `}</style>
       </div>
-    );
+    )
   }
 
   if (session) {
     left = (
       <div className="left">
-        <Link href="/">
-          <a className="bold" data-active={isActive('/')}>
-            Accueil
-          </a>
+        <Link className="bold" data-active={isActive("/")} href="/">
+          Accueil
         </Link>
-        <Link href="/recos">
-          <a data-active={isActive('/recos')}>Mes recos</a>
+        <Link data-active={isActive("/recos")} href="/recos">
+          Mes recos
         </Link>
         <style jsx>{`
           .bold {
@@ -136,7 +130,7 @@ const Header: React.FC = () => {
             display: inline-block;
           }
 
-          .left a[data-active='true'] {
+          .left a[data-active="true"] {
             color: gray;
           }
 
@@ -145,20 +139,16 @@ const Header: React.FC = () => {
           }
         `}</style>
       </div>
-    );
+    )
     right = (
       <div className="right">
         <p>
           {session.user.name} ({session.user.email})
         </p>
         <Link href="/create">
-          <button>
-            <a>Nouvelle reco</a>
-          </button>
+          <button>Nouvelle reco</button>
         </Link>
-        <button onClick={() => signOut()}>
-          <a>Log out</a>
-        </button>
+        <button onClick={() => signOut()}>Log out</button>
         <style jsx>{`
           a {
             text-decoration: none;
@@ -191,7 +181,7 @@ const Header: React.FC = () => {
           }
         `}</style>
       </div>
-    );
+    )
   }
 
   return (
@@ -206,7 +196,7 @@ const Header: React.FC = () => {
         }
       `}</style>
     </nav>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

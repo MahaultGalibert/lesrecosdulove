@@ -1,50 +1,48 @@
 // pages/create.tsx
 
-import React, { useState } from 'react';
-import Layout from '../components/Layout';
-import Router from 'next/router';
-
+import React, { useState } from "react"
+import Layout from "../components/Layout"
+import Router from "next/router"
 
 export type RecoProps = {
-    category: string;
-    title: string;
-    imageUrl: string;
-    author: string;
-    comment: string;
-  };
-  
+  category: string
+  title: string
+  imageUrl: string
+  author: string
+  comment: string
+}
 
-const Reco: React.FC<{ reco: RecoProps}> = ({ reco }) => {
-  const [category, setCategory] = useState('');
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [comment, setComment] = useState('');
+const Reco: React.FC<{ reco: RecoProps }> = ({ reco }) => {
+  const [category, setCategory] = useState("")
+  const [title, setTitle] = useState("")
+  const [author, setAuthor] = useState("")
+  const [imageUrl, setImageUrl] = useState("")
+  const [comment, setComment] = useState("")
 
-// /pages/create.tsx
+  // /pages/create.tsx
 
-const submitData = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
+  const submitData = async (e: React.SyntheticEvent) => {
+    e.preventDefault()
     try {
-      const body = { category, title, author, imageUrl, comment };
-      await fetch('/api/post', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const body = { category, title, author, imageUrl, comment }
+      await fetch("/api/post", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      });
-      await Router.push('/recos');
+      })
+      await Router.push("/recos")
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
-  };
-  
+  }
 
   return (
     <Layout>
       <div>
         <form onSubmit={submitData}>
           <h1>Nouvelle reco</h1>
-          <input disabled
+          <input
+            disabled
             onChange={(e) => setCategory(e.target.value)}
             placeholder="Film"
             type="mandatoryText"
@@ -77,7 +75,7 @@ const submitData = async (e: React.SyntheticEvent) => {
             value={comment}
           />
           <input disabled={!title} type="submit" value="Create" />
-          <a className="back" href="#" onClick={() => Router.push('/')}>
+          <a className="back" href="#" onClick={() => Router.push("/")}>
             or Cancel
           </a>
         </form>
@@ -91,7 +89,7 @@ const submitData = async (e: React.SyntheticEvent) => {
           align-items: center;
         }
 
-        input[type='mandatoryText'],
+        input[type="mandatoryText"],
         textarea {
           width: 100%;
           padding: 0.5rem;
@@ -102,7 +100,7 @@ const submitData = async (e: React.SyntheticEvent) => {
           font-size: 15px;
         }
 
-        input[type='optionalText'],
+        input[type="optionalText"],
         textarea {
           width: 100%;
           padding: 0.5rem;
@@ -115,13 +113,13 @@ const submitData = async (e: React.SyntheticEvent) => {
         }
 
         textarea {
-            font-family: sans-serif;
-            font-style: italic;
-            font-size: 15px;
-            resize: none;
-          }
+          font-family: sans-serif;
+          font-style: italic;
+          font-size: 15px;
+          resize: none;
+        }
 
-        input[type='submit'] {
+        input[type="submit"] {
           background: #ececec;
           border: 0;
           padding: 1rem 2rem;
@@ -132,7 +130,7 @@ const submitData = async (e: React.SyntheticEvent) => {
         }
       `}</style>
     </Layout>
-  );
-};
+  )
+}
 
-export default Reco;
+export default Reco
