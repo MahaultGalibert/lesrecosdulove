@@ -40,7 +40,7 @@ const Reco: React.FC<{ reco: RecoProps }> = ({ reco }) => {
     <Layout>
       <div>
         <form onSubmit={submitData}>
-          <h1>Nouvelle reco</h1>
+          <h1 className="text-xl font-bold mb-4">Nouvelle reco</h1>
           <input
             disabled
             onChange={(e) => setCategory(e.target.value)}
@@ -74,8 +74,8 @@ const Reco: React.FC<{ reco: RecoProps }> = ({ reco }) => {
             rows={8}
             value={comment}
           />
-          <input disabled={!title} type="submit" value="Create" />
-          <a className="back" href="#" onClick={() => Router.push("/")}>
+          <input className = "hover:cursor-pointer" disabled={!title} type="submit" value="Create" />
+          <a className="hover:cursor-pointer ml-3" href="#" onClick={() => Router.push("/")}>
             or Cancel
           </a>
         </form>
@@ -125,9 +125,6 @@ const Reco: React.FC<{ reco: RecoProps }> = ({ reco }) => {
           padding: 1rem 2rem;
         }
 
-        .back {
-          margin-left: 1rem;
-        }
       `}</style>
     </Layout>
   )

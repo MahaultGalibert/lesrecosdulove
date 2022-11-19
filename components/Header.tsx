@@ -12,11 +12,11 @@ const Header: React.FC = () => {
   const { data: session, status } = useSession()
 
   let left = (
-    <div className="ml-auto">
+    <div className="left">
       <Link
-        className="font-bold color-grey inline-block"
         data-active={isActive("/")}
         href="/"
+        className="no-underline font-bold active:text-gray-500 hover:text-gray-500 ml-4 inline-block"
       >
         Accueil
       </Link>
@@ -27,18 +27,18 @@ const Header: React.FC = () => {
 
   if (status === "loading") {
     left = (
-      <div className="ml-auto">
+      <div className="left">
         <Link
-          className="no-underline font-bold color-grey ml-4 inline-block"
           data-active={isActive("/")}
           href="/"
+          className="no-underline font-bold active:text-gray-500 hover:text-gray-500 ml-4 inline-block"
         >
           Accueil
         </Link>
       </div>
     )
     right = (
-      <div className="ml-auto">
+      <div className="right">
         <p>Validating session ...</p>
       </div>
     )
@@ -48,9 +48,9 @@ const Header: React.FC = () => {
     right = (
       <div className="ml-auto">
         <Link
-          className="no-underline ml-4 inline-block px-2 py-4 border border-solid rounded"
           data-active={isActive("/signin")}
           href="/api/auth/signin"
+          className="no-underline ml-4 inline-block px-2 py-4"
         >
           Log in
         </Link>
@@ -62,16 +62,16 @@ const Header: React.FC = () => {
     left = (
       <div className="left">
         <Link
-          className="no-underline font-bold color-gray ml-4 inline-block"
           data-active={isActive("/")}
           href="/"
+          className="no-underline font-bold active:text-gray-500 hover:text-gray-500 ml-4 inline-block"
         >
           Accueil
         </Link>
         <Link
-          className="ml-4 inline-block"
           data-active={isActive("/recos")}
           href="/recos"
+          className="no-underline active:text-gray-500 hover:text-gray-500 ml-4 inline-block"
         >
           Mes recos
         </Link>
@@ -83,12 +83,12 @@ const Header: React.FC = () => {
           {session.user.name} ({session.user.email})
         </p>
         <Link
-          className="no-underline ml-4 inline-block px-2 py-4 border border-solid rounded"
+          className="no-underline mx-4 inline-block px-2 py-4"
           href="/create"
         >
-          <button>Nouvelle reco</button>
+          <button className="border-none text-sm">Nouvelle reco</button>
         </Link>
-        <button className="border-none" onClick={() => signOut()}>
+        <button className="border-none text-sm" onClick={() => signOut()}>
           Log out
         </button>
       </div>

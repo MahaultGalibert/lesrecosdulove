@@ -39,7 +39,7 @@ const Recos: React.FC<Props> = (props) => {
   if (!session) {
     return (
       <Layout>
-        <h1>Mes recos</h1>
+        <h1 className="ml-4 mt-2 text-3xl font-bold">Mes recos</h1>
         <div>Vous devez être connecté pour voir cette page.</div>
       </Layout>
     );
@@ -48,7 +48,7 @@ const Recos: React.FC<Props> = (props) => {
   return (
     <Layout>
       <div className="page">
-        <h1>Mes recos</h1>
+        <h1 className="ml-4 mt-2 text-3xl font-bold">Mes recos</h1>
         <main id="feed-box-div">
           {props.recos.map((post) => (
             <div key={post.id} className="post-box-div">
