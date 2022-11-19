@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown"
 import Layout from "../../components/Layout"
 import { PostProps } from "../../components/Post"
 // pages/p/[id].tsx
-import prisma from '../../lib/prisma';
+import prisma from "../../lib/prisma"
 
 // pages/p/[id].tsx
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -17,12 +17,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         select: { name: true },
       },
     },
-  });
+  })
   return {
     props: post,
-  };
-};
-
+  }
+}
 
 const Post: React.FC<PostProps> = (props) => {
   let title = props.title
@@ -30,18 +29,19 @@ const Post: React.FC<PostProps> = (props) => {
   return (
     <Layout>
       <div>
-        <h2>{title}</h2>
-        <p><b>{props?.author}</b></p>
-        <p>Proposé par <i>{props.creator.name}</i></p>
-        <img className="post-img" src={props.imageUrl}></img>
-        <ReactMarkdown children={props.comment} />
+        <h2 className="font-bold text-xl mb-1">{title}</h2>
+        <p className="mb-3">{props?.author}</p>
+        <p className="text-sm">
+          Proposé par <i>{props.creator.name}</i>
+        </p>
+        <img className="mt-4" src={props.imageUrl}></img>
+        <ReactMarkdown className="text-sm mt-4" children={props.comment} />
       </div>
       <style jsx>{`
         .page {
           background: white;
           padding: 2rem;
         }
-
       `}</style>
     </Layout>
   )
