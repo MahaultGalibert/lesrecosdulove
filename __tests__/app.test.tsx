@@ -1,24 +1,29 @@
 import React from "react"
 import { describe, expect, it } from "vitest"
-import { render, screen } from "@testing-library/react"
+import { render, screen, waitFor } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import Post from "../components/Post"
 
 describe("Post", () => {
-  it("renders Post", () => {
+  it("should render posts", async () => {
     render(
       <Post
         post={{
           id: "",
           category: "",
-          title: "",
+          title: "A voix haute",
           imageUrl: "",
           author: "",
           comment: "",
-          creator: null,
+          creator: {
+            name: "",
+            email: "",
+          },
         }}
       />
     )
-    expect(screen.getByText("A voix haute"))
+    await waitFor(() =>
+      expect(screen.getByText("A voix haute")).toBeInTheDocument()
+    )
   })
 })
