@@ -12,29 +12,14 @@ const Header: React.FC = () => {
   const { data: session, status } = useSession()
 
   let left = (
-    <div className="left">
-      <Link className="bold" data-active={isActive("/")} href="/">
+    <div className="ml-auto">
+      <Link
+        className="font-bold color-grey inline-block"
+        data-active={isActive("/")}
+        href="/"
+      >
         Accueil
       </Link>
-      <style jsx>{`
-        .bold {
-          font-weight: bold;
-        }
-
-        a {
-          text-decoration: none;
-          color: var(--geist-foreground);
-          display: inline-block;
-        }
-
-        .left a[data-active="true"] {
-          color: grey;
-        }
-
-        .left {
-          color: red;
-        }
-      `}</style>
     </div>
   )
 
@@ -42,70 +27,33 @@ const Header: React.FC = () => {
 
   if (status === "loading") {
     left = (
-      <div className="left">
-        <Link className="bold" data-active={isActive("/")} href="/">
+      <div className="ml-auto">
+        <Link
+          className="no-underline font-bold color-grey ml-4 inline-block"
+          data-active={isActive("/")}
+          href="/"
+        >
           Accueil
         </Link>
-        <style jsx>{`
-          .bold {
-            font-weight: bold;
-          }
-
-          a {
-            text-decoration: none;
-            color: var(--geist-foreground);
-            display: inline-block;
-          }
-
-          .left a[data-active="true"] {
-            color: gray;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-        `}</style>
       </div>
     )
     right = (
-      <div className="right">
+      <div className="ml-auto">
         <p>Validating session ...</p>
-        <style jsx>{`
-          .right {
-            margin-left: auto;
-          }
-        `}</style>
       </div>
     )
   }
 
   if (!session) {
     right = (
-      <div className="right">
-        <Link data-active={isActive("/signup")} href="/api/auth/signin">
+      <div className="ml-auto">
+        <Link
+          className="no-underline ml-4 inline-block px-2 py-4 border border-solid rounded"
+          data-active={isActive("/signin")}
+          href="/api/auth/signin"
+        >
           Log in
         </Link>
-        <style jsx>{`
-          a {
-            text-decoration: none;
-            color: var(--geist-foreground);
-            display: inline-block;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-
-          .right {
-            margin-left: auto;
-          }
-
-          .right a {
-            border: 1px solid var(--geist-foreground);
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-          }
-        `}</style>
       </div>
     )
   }
@@ -113,88 +61,44 @@ const Header: React.FC = () => {
   if (session) {
     left = (
       <div className="left">
-        <Link className="bold" data-active={isActive("/")} href="/">
+        <Link
+          className="no-underline font-bold color-gray ml-4 inline-block"
+          data-active={isActive("/")}
+          href="/"
+        >
           Accueil
         </Link>
-        <Link data-active={isActive("/recos")} href="/recos">
+        <Link
+          className="ml-4 inline-block"
+          data-active={isActive("/recos")}
+          href="/recos"
+        >
           Mes recos
         </Link>
-        <style jsx>{`
-          .bold {
-            font-weight: bold;
-          }
-
-          a {
-            text-decoration: none;
-            color: var(--geist-foreground);
-            display: inline-block;
-          }
-
-          .left a[data-active="true"] {
-            color: gray;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-        `}</style>
       </div>
     )
     right = (
-      <div className="right">
-        <p>
+      <div className="ml-auto">
+        <p className="inline-block text-xs pr-4">
           {session.user.name} ({session.user.email})
         </p>
-        <Link href="/create">
+        <Link
+          className="no-underline ml-4 inline-block px-2 py-4 border border-solid rounded"
+          href="/create"
+        >
           <button>Nouvelle reco</button>
         </Link>
-        <button onClick={() => signOut()}>Log out</button>
-        <style jsx>{`
-          a {
-            text-decoration: none;
-            color: var(--geist-foreground);
-            display: inline-block;
-          }
-
-          p {
-            display: inline-block;
-            font-size: 13px;
-            padding-right: 1rem;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-
-          .right {
-            margin-left: auto;
-          }
-
-          .right a {
-            border: 1px solid var(--geist-foreground);
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-          }
-
-          button {
-            border: none;
-          }
-        `}</style>
+        <button className="border-none" onClick={() => signOut()}>
+          Log out
+        </button>
       </div>
     )
   }
 
   return (
-    <nav>
+    <nav className="flex p-8 items-center">
       {left}
       {right}
-      <style jsx>{`
-        nav {
-          display: flex;
-          padding: 2rem;
-          align-items: center;
-        }
-      `}</style>
     </nav>
   )
 }
