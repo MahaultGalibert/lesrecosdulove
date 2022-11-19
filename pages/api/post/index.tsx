@@ -1,7 +1,7 @@
 // pages/api/post/index.ts
 
 import { getSession } from "next-auth/react"
-import prisma from ""../../../lib/prisma"
+import prisma from "../../../lib/prisma"
 
 // POST /api/post
 // Required fields in body: category, title
@@ -18,8 +18,8 @@ export default async function handle(req, res) {
       imageUrl: imageUrl,
       comment: comment,
       creator: { connect: { email: session?.user?.email } },
-      likedBy: {connect: {email: session?.user?.email}}
+      likedBy: { connect: { email: session?.user?.email } },
     },
-  });
+  })
   res.json(result)
 }
