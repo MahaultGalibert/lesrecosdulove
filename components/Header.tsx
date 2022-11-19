@@ -1,212 +1,106 @@
 // Header.tsx
-import React from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { signOut, useSession } from 'next-auth/react';
+import React from "react"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import { signOut, useSession } from "next-auth/react"
 
 const Header: React.FC = () => {
-  const router = useRouter();
+  const router = useRouter()
   const isActive: (pathname: string) => boolean = (pathname) =>
-    router.pathname === pathname;
+    router.pathname === pathname
 
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession()
 
   let left = (
     <div className="left">
-      <Link href="/">
-        <a className="bold" data-active={isActive('/')}>
-          Accueil
-        </a>
+      <Link
+        data-active={isActive("/")}
+        href="/"
+        className="no-underline font-bold active:text-gray-500 hover:text-gray-500 ml-4 inline-block"
+      >
+        Accueil
       </Link>
-      <style jsx>{`
-        .bold {
-          font-weight: bold;
-        }
-
-        a {
-          text-decoration: none;
-          color: var(--geist-foreground);
-          display: inline-block;
-        }
-
-        .left a[data-active='true'] {
-          color: gray;
-        }
-
-        a + a {
-          margin-left: 1rem;
-        }
-      `}</style>
     </div>
-  );
+  )
 
-  let right = null;
+  let right = null
 
-  if (status === 'loading') {
+  if (status === "loading") {
     left = (
       <div className="left">
-        <Link href="/">
-          <a className="bold" data-active={isActive('/')}>
-            Accueil
-          </a>
+        <Link
+          data-active={isActive("/")}
+          href="/"
+          className="no-underline font-bold active:text-gray-500 hover:text-gray-500 ml-4 inline-block"
+        >
+          Accueil
         </Link>
-        <style jsx>{`
-          .bold {
-            font-weight: bold;
-          }
-
-          a {
-            text-decoration: none;
-            color: var(--geist-foreground);
-            display: inline-block;
-          }
-
-          .left a[data-active='true'] {
-            color: gray;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-        `}</style>
       </div>
-    );
+    )
     right = (
       <div className="right">
         <p>Validating session ...</p>
-        <style jsx>{`
-          .right {
-            margin-left: auto;
-          }
-        `}</style>
       </div>
-    );
+    )
   }
 
   if (!session) {
     right = (
-      <div className="right">
-        <Link href="/api/auth/signin">
-          <a data-active={isActive('/signup')}>Log in</a>
+      <div className="ml-auto">
+        <Link
+          data-active={isActive("/signin")}
+          href="/api/auth/signin"
+          className="no-underline ml-4 inline-block px-2 py-4"
+        >
+          Log in
         </Link>
-        <style jsx>{`
-          a {
-            text-decoration: none;
-            color: var(--geist-foreground);
-            display: inline-block;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-
-          .right {
-            margin-left: auto;
-          }
-
-          .right a {
-            border: 1px solid var(--geist-foreground);
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-          }
-        `}</style>
       </div>
-    );
+    )
   }
 
   if (session) {
     left = (
       <div className="left">
-        <Link href="/">
-          <a className="bold" data-active={isActive('/')}>
-            Accueil
-          </a>
+        <Link
+          data-active={isActive("/")}
+          href="/"
+          className="no-underline font-bold active:text-gray-500 hover:text-gray-500 ml-4 inline-block"
+        >
+          Accueil
         </Link>
-        <Link href="/recos">
-          <a data-active={isActive('/recos')}>Mes recos</a>
+        <Link
+          data-active={isActive("/recos")}
+          href="/recos"
+          className="no-underline active:text-gray-500 hover:text-gray-500 ml-4 inline-block"
+        >
+          Mes recos
         </Link>
-        <style jsx>{`
-          .bold {
-            font-weight: bold;
-          }
-
-          a {
-            text-decoration: none;
-            color: var(--geist-foreground);
-            display: inline-block;
-          }
-
-          .left a[data-active='true'] {
-            color: gray;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-        `}</style>
       </div>
-    );
+    )
     right = (
-      <div className="right">
-        <p>
+      <div className="ml-auto">
+        <p className="inline-block text-xs pr-4">
           {session.user.name} ({session.user.email})
         </p>
-        <Link href="/create">
-          <button>
-            <a>Nouvelle reco</a>
-          </button>
+        <Link
+          className="no-underline mx-4 inline-block px-2 py-4"
+          href="/create"
+        >
+          <button className="border-none text-sm">Nouvelle reco</button>
         </Link>
-        <button onClick={() => signOut()}>
-          <a>Log out</a>
+        <button className="border-none text-sm" onClick={() => signOut()}>
+          Log out
         </button>
-        <style jsx>{`
-          a {
-            text-decoration: none;
-            color: var(--geist-foreground);
-            display: inline-block;
-          }
-
-          p {
-            display: inline-block;
-            font-size: 13px;
-            padding-right: 1rem;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-
-          .right {
-            margin-left: auto;
-          }
-
-          .right a {
-            border: 1px solid var(--geist-foreground);
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-          }
-
-          button {
-            border: none;
-          }
-        `}</style>
       </div>
-    );
+    )
   }
 
   return (
-    <nav>
+    <nav className="flex p-8 items-center">
       {left}
       {right}
-      <style jsx>{`
-        nav {
-          display: flex;
-          padding: 2rem;
-          align-items: center;
-        }
-      `}</style>
     </nav>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

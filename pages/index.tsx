@@ -29,8 +29,8 @@ const Blog: React.FC<Props> = (props) => {
   return (
     <Layout>
       <div className="page">
-      <img src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f496.svg" width="50" height="50"></img>
-        <h1>Les recos du love</h1>
+      <img className="ml-4" src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f496.svg" width="50" height="50"></img>
+        <h1 className="ml-4 mt-2 text-3xl font-bold">Les recos du love</h1>
         <main id="feed-box-div">
           {props.feed.map((post) => (
             <div key={post.id} className="post-box-div">
@@ -48,7 +48,7 @@ const Blog: React.FC<Props> = (props) => {
           border-style: solid;
           border-width: 0.01rem;
           border-color: rgb(220,220,220);
-          border-radius: 0.3rem;
+          border-radius: 0.4rem;
           height: 10rem;
           width: 15rem;
         }     
