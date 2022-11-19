@@ -74,9 +74,9 @@ const Reco: React.FC<{ reco: RecoProps }> = ({ reco }) => {
             rows={8}
             value={comment}
           />
-          <input className = "hover:cursor-pointer" disabled={!title} type="submit" value="Create" />
-          <a className="hover:cursor-pointer ml-3" href="#" onClick={() => Router.push("/")}>
-            or Cancel
+          <input className = "hover:cursor-pointer" disabled={!title} type="submit" value="Créer" />
+          <a className="text-sm hover:cursor-pointer ml-3" href="#" onClick={() => Router.push("/")}>
+            Annuler
           </a>
         </form>
       </div>
