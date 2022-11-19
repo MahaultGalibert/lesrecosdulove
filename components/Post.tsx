@@ -1,25 +1,33 @@
-import React from "react";
-import Router from "next/router";
+import React from "react"
+import Router from "next/router"
 
 export type PostProps = {
-  id: string;
-  category: string;
-  title: string;
-  imageUrl: string;
-  author: string;
-  comment: string;
+  id: string
+  category: string
+  title: string
+  imageUrl: string
+  author: string
+  comment: string
   creator: {
-    name: string;
-    email: string;
-  } | null;
-};
+    name: string
+    email: string
+  }
+  likedBy: {
+    name: string
+    email: string
+  }
+}
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
   return (
-<div className="post-div" onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}>
+    <div
+      className="post-div"
+      onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}
+    >
       <img className="post-img" src={post.imageUrl}></img>
       <p className="title-p">{post.title}</p>
       <small className="creator-pseudonym-small">{post.creator.name}</small>
+      {/* <small className="countLikedBy-small">"nbVotes"&<img src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f496.svg" width="5" height="5"></img></small> */}
       <style jsx>{`
         .post-div {
           color: inherit;
@@ -29,7 +37,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
           justify-content: space-between;
           height: 100%;
         }
-        
+
         .post-div:hover {
           box-shadow: 1px 1px 3px #aaa;
           cursor: pointer;
@@ -45,12 +53,17 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
           margin: 0;
         }
 
-        .creator-pseudonym-small{
+        .creator-pseudonym-small {
           font-size: 0.7rem;
         }
+
+        // .countLikedBy-small{
+        //   font-size: 0.7rem;
+        //   text-align: right;
+        // }
       `}</style>
     </div>
-  );
-};
+  )
+}
 
-export default Post;
+export default Post

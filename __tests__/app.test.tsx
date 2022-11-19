@@ -19,6 +19,10 @@ describe("Post", () => {
             name: "",
             email: "",
           },
+          likedBy: {
+            name: "",
+            email: "",
+          },
         }}
       />
     )
