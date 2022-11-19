@@ -12,10 +12,7 @@ export type PostProps = {
     name: string
     email: string
   }
-  likedBy: {
-    name: string
-    email: string
-  }
+  likedBy: [name: string, email: string]
 }
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
@@ -27,7 +24,16 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       <img className="post-img" src={post.imageUrl}></img>
       <p className="title-p">{post.title}</p>
       <small className="creator-pseudonym-small">{post.creator.name}</small>
-      {/* <small className="countLikedBy-small">"nbVotes"&<img src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f496.svg" width="5" height="5"></img></small> */}
+      {
+        <small>
+          <p className="text-xs text-right mb-1">nbVotes</p>
+          {/* <img className="object-right"
+            src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f496.svg"
+            width="15"
+            height="15"
+          ></img> */}
+        </small>
+      }
       <style jsx>{`
         .post-div {
           color: inherit;
@@ -57,10 +63,6 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
           font-size: 0.7rem;
         }
 
-        // .countLikedBy-small{
-        //   font-size: 0.7rem;
-        //   text-align: right;
-        // }
       `}</style>
     </div>
   )
