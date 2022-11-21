@@ -22,7 +22,6 @@ model Post {
   creator   User?   @relation("creator", fields: [creatorId], references: [id])
   creatorId String?
   likedBy   User[] @relation("likers")
-  userId    String
 }
 
 model Account {
