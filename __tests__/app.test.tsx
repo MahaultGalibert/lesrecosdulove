@@ -19,10 +19,13 @@ describe("Post", () => {
             name: "",
             email: "",
           },
-          likedBy: [
-            name: "",
-            email: "",
-          ]
+          _count: {
+            likedBy: 1,
+          },
+          // likedBy: [
+          //   name: "",
+          //   email: "",
+          // ]
         }}
       />
     )
