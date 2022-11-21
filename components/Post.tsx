@@ -12,7 +12,6 @@ export type PostProps = {
     name: string
     email: string
   }
-  likedBy: [name: string, email: string]
   _count: {
     likedBy: number
   }
@@ -28,7 +27,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       <img className="post-img" src={post.imageUrl}></img>
       <p className="title-p">{post.title}</p>
       <small className="creator-pseudonym-small">{post.creator.name}</small>
-      <small className="text-right text-xs mr-1">
+      <small className="text-right text-xs mr-1.5">
         {post._count.likedBy}
         <img
           className="ml-0.5 float-right mt-0.5"

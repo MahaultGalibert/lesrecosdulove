@@ -22,6 +22,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       creator: {
         select: { name: true },
       },
+      _count: {
+        select: { likedBy: true },
+      },
     },
   })
   return {
@@ -40,7 +43,9 @@ const Recos: React.FC<Props> = (props) => {
     return (
       <Layout>
         <h1 className="ml-4 mt-2 text-3xl font-bold">Mes recos</h1>
-        <div className="text-sm ml-4 mt-8">Vous devez être connecté pour voir cette page.</div>
+        <div className="text-sm ml-4 mt-8">
+          Vous devez être connecté pour voir cette page.
+        </div>
       </Layout>
     )
   }
