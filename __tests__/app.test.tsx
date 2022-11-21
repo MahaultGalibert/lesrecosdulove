@@ -22,10 +22,6 @@ describe("Post", () => {
           _count: {
             likedBy: 1,
           },
-          // likedBy: [
-          //   name: "",
-          //   email: "",
-          // ]
         }}
       />
     )
