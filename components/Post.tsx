@@ -28,16 +28,15 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       <img className="post-img" src={post.imageUrl}></img>
       <p className="title-p">{post.title}</p>
       <small className="creator-pseudonym-small">{post.creator.name}</small>
-      {
-        <small>
-          <p className="text-xs text-right pb-2 mr-4">{post._count.likedBy}</p>
-          {/* <img className="object-right"
-            src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f496.svg"
-            width="15"
-            height="15"
-          ></img> */}
-        </small>
-      }
+      <small className="text-right text-xs mr-1">
+        {post._count.likedBy}
+        <img
+          className="ml-0.5 float-right mt-0.5"
+          src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f496.svg"
+          width="13"
+          height="13"
+        ></img>
+      </small>
       <style jsx>{`
         .post-div {
           color: inherit;
@@ -54,7 +53,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
         }
 
         .post-img {
-          height: 6rem;
+          height: 5.8rem;
         }
 
         .title-p {
@@ -66,7 +65,6 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
         .creator-pseudonym-small {
           font-size: 0.7rem;
         }
-
       `}</style>
     </div>
   )
