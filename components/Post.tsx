@@ -1,25 +1,41 @@
-import React from "react";
-import Router from "next/router";
+import React from "react"
+import Router from "next/router"
 
 export type PostProps = {
-  id: string;
-  category: string;
-  title: string;
-  imageUrl: string;
-  author: string;
-  comment: string;
+  id: string
+  category: string
+  title: string
+  imageUrl: string
+  author: string
+  comment: string
   creator: {
-    name: string;
-    email: string;
-  } | null;
-};
+    name: string
+    email: string
+  }
+  _count: {
+    likedBy: number
+  }
+}
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
+  console.log(post)
   return (
-<div className="post-div" onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}>
+    <div
+      className="post-div"
+      onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}
+    >
       <img className="post-img" src={post.imageUrl}></img>
       <p className="title-p">{post.title}</p>
       <small className="creator-pseudonym-small">{post.creator.name}</small>
+      <small className="text-right text-xs mr-1.5">
+        {post._count.likedBy}
+        <img
+          className="ml-0.5 float-right mt-0.5"
+          src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f496.svg"
+          width="13"
+          height="13"
+        ></img>
+      </small>
       <style jsx>{`
         .post-div {
           color: inherit;
@@ -29,14 +45,14 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
           justify-content: space-between;
           height: 100%;
         }
-        
+
         .post-div:hover {
           box-shadow: 1px 1px 3px #aaa;
           cursor: pointer;
         }
 
         .post-img {
-          height: 6rem;
+          height: 5.8rem;
         }
 
         .title-p {
@@ -45,12 +61,12 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
           margin: 0;
         }
 
-        .creator-pseudonym-small{
+        .creator-pseudonym-small {
           font-size: 0.7rem;
         }
       `}</style>
     </div>
-  );
-};
+  )
+}
 
-export default Post;
+export default Post
