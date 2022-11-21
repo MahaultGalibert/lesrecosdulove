@@ -17,7 +17,6 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     },
   })
-  console.log(feed)
   return {
     props: { feed },
     revalidate: 10,
