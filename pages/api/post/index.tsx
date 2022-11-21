@@ -18,7 +18,7 @@ export default async function handle(req, res) {
       imageUrl: imageUrl,
       comment: comment,
       creator: { connect: { email: session?.user?.email } },
-      // likedBy: { connect: { email: session?.user?.email } },
+      likedBy: { connect: { email: session?.user?.email } },
     },
   })
   res.json(result)
