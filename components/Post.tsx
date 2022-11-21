@@ -13,9 +13,13 @@ export type PostProps = {
     email: string
   }
   likedBy: [name: string, email: string]
+  _count: {
+    likedBy: number
+  }
 }
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
+  console.log(post)
   return (
     <div
       className="post-div"
@@ -26,7 +30,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       <small className="creator-pseudonym-small">{post.creator.name}</small>
       {
         <small>
-          <p className="text-xs text-right mb-1">nbVotes</p>
+          <p className="text-xs text-right pb-2 mr-4">{post._count.likedBy}</p>
           {/* <img className="object-right"
             src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f496.svg"
             width="15"

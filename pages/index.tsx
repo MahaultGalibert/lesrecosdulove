@@ -12,11 +12,12 @@ export const getStaticProps: GetStaticProps = async () => {
       creator: {
         select: { name: true },
       },
-      // _count: {
-      //   select: { likedBy: true }
-      // }
+      _count: {
+        select: { likedBy: true }
+      }
     },
   })
+  console.log(feed)
   return {
     props: { feed },
     revalidate: 10,
