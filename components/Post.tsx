@@ -15,6 +15,9 @@ export type PostProps = {
   _count: {
     likedBy: number
   }
+  likedBy: {
+    name: string
+  }
 }
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
@@ -35,6 +38,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
           height="13"
         ></img>
       </small>
+      <small>{post.likedBy.map((x: { name: any })=>x.name)}</small>
       <style jsx>{`
         .post-div {
           color: inherit;

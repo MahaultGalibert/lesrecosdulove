@@ -14,6 +14,9 @@ export const getStaticProps: GetStaticProps = async () => {
       },
       _count: {
         select: { likedBy: true }
+      },
+      likedBy: {
+        select: {name: true}
       }
     },
   })
