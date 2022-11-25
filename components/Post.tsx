@@ -34,21 +34,25 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       <p className="title-p">{post.title}</p>
       <small className="creator-pseudonym-small">{post.creator.name}</small>
       <small className="float-right">
-      <Tippy
-        content={
-          <small>{post.likedBy.map((x: { name: any }) => ` ${x.name}`)}</small>
-        }
-      >
-        <button className="ml-0 float-right w-5 text-xs">
+        <Tippy
+          content={
+            <small>
+              {post.likedBy.map((x: { name: any }) => (
+                <p>{x.name}</p>
+              ))}
+            </small>
+          }
+        >
+          <button className="ml-0 float-right w-3.5 text-xs align-top text-center">
             {post._count.likedBy}
-        </button>
-      </Tippy>
-      <img
-        className="mb-0 float-right mr-0"
-        src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f496.svg"
-        width="13"
-        height="13"
-      ></img>
+          </button>
+        </Tippy>
+        <img
+          className="mt-0.5 float-right mr-0"
+          src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f496.svg"
+          width="13"
+          height="13"
+        ></img>
       </small>
       <style jsx>{`
         .post-div {

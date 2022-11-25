@@ -25,6 +25,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       _count: {
         select: { likedBy: true },
       },
+      likedBy: {
+        select: { name: true },
+      },
     },
   })
   return {
