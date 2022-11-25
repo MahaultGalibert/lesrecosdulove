@@ -1,5 +1,11 @@
 import React from "react"
 import Router from "next/router"
+import Tippy from "@tippyjs/react"
+import "tippy.js/dist/tippy.css"
+
+export type UserProps = {
+  name: string
+}
 
 export type PostProps = {
   id: string
@@ -15,6 +21,7 @@ export type PostProps = {
   _count: {
     likedBy: number
   }
+  likedBy: [UserProps]
 }
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
@@ -26,10 +33,22 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       <img className="post-img" src={post.imageUrl}></img>
       <p className="title-p">{post.title}</p>
       <small className="creator-pseudonym-small">{post.creator.name}</small>
-      <small className="text-right text-xs mr-1.5">
-        {post._count.likedBy}
+      <small className="float-right">
+        <Tippy
+          content={
+            <small>
+              {post.likedBy.map((x: { name: any }) => (
+                <p>{x.name}</p>
+              ))}
+            </small>
+          }
+        >
+          <button className="ml-0 float-right w-3.5 text-xs align-top text-center">
+            {post._count.likedBy}
+          </button>
+        </Tippy>
         <img
-          className="ml-0.5 float-right mt-0.5"
+          className="mt-0.5 float-right mr-0"
           src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f496.svg"
           width="13"
           height="13"

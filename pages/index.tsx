@@ -10,11 +10,14 @@ export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.post.findMany({
     include: {
       creator: {
-        select: { name: true }
+        select: { name: true },
       },
       _count: {
-        select: { likedBy: true }
-      }
+        select: { likedBy: true },
+      },
+      likedBy: {
+        select: { name: true },
+      },
     },
   })
   return {
