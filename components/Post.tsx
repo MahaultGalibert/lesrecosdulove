@@ -30,9 +30,11 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       className="post-div"
       onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}
     >
-      <img className="post-img" src={post.imageUrl}></img>
+      <img className="post-img mb-0.5" src={post.imageUrl}></img>
       <p className="title-p">{post.title}</p>
-      <small className="creator-pseudonym-small">{post.creator.name}</small>
+      <small className="creator-pseudonym-small w-50">
+        {post.creator.name}
+      </small>
       <small className="float-right">
         <Tippy
           content={
@@ -70,7 +72,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
         }
 
         .post-img {
-          height: 5.8rem;
+          height: 5.5rem;
         }
 
         .title-p {
