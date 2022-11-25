@@ -1,6 +1,10 @@
 import React from "react"
 import Router from "next/router"
 
+export type UserProps = {
+  name: string
+}
+
 export type PostProps = {
   id: string
   category: string
@@ -15,7 +19,7 @@ export type PostProps = {
   _count: {
     likedBy: number
   }
-  likedBy: [{ name: string }]
+  likedBy: [UserProps]
 }
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
@@ -36,7 +40,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
           height="13"
         ></img>
       </small>
-      <small>{post.likedBy.map((x: { name: any }) => x.name)}</small>
+      <small>{post.likedBy.map((x: { name: any }) => ` ${x.name}`)}</small>
       <style jsx>{`
         .post-div {
           color: inherit;
