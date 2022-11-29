@@ -74,8 +74,17 @@ const Reco: React.FC<{ reco: RecoProps }> = ({ reco }) => {
             rows={8}
             value={comment}
           />
-          <input className = "hover:cursor-pointer" disabled={!title} type="submit" value="Créer" />
-          <a className="text-sm hover:cursor-pointer ml-3" href="#" onClick={() => Router.push("/")}>
+          <input
+            className="hover:cursor-pointer"
+            disabled={!title}
+            type="submit"
+            value="Créer"
+          />
+          <a
+            className="text-sm hover:cursor-pointer ml-3"
+            href="#"
+            onClick={() => Router.push("/")}
+          >
             Annuler
           </a>
         </form>
@@ -124,7 +133,6 @@ const Reco: React.FC<{ reco: RecoProps }> = ({ reco }) => {
           border: 0;
           padding: 1rem 2rem;
         }
-
       `}</style>
     </Layout>
   )

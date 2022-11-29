@@ -26,12 +26,18 @@ export type PostProps = {
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
   return (
-    <div
-      className="post-div"
-      onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}
-    >
-      <img className="post-img mb-0.5" src={post.imageUrl}></img>
-      <p className="title-p">{post.title}</p>
+    <div className="post-div">
+      <img
+        className="post-img mb-0.5"
+        src={post.imageUrl}
+        onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}
+      ></img>
+      <p
+        className="title-p"
+        onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}
+      >
+        {post.title}
+      </p>
       <small className="creator-pseudonym-small w-50">
         {post.creator.name}
       </small>
@@ -68,17 +74,24 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
 
         .post-div:hover {
           box-shadow: 1px 1px 3px #aaa;
-          cursor: pointer;
         }
 
         .post-img {
           height: 5.5rem;
         }
 
+        .post-img:hover {
+          cursor: pointer;
+        }
+
         .title-p {
           font-weight: bold;
           font-size: 0.9rem;
           margin: 0;
+        }
+
+        .title-p:hover {
+          cursor: pointer;
         }
 
         .creator-pseudonym-small {
