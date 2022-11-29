@@ -28,12 +28,12 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
   return (
     <div className="post-div">
       <img
-        className="post-img mb-0.5"
+        className="h-20 hover:cursor-pointer mb-0.5"
         src={post.imageUrl}
         onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}
       ></img>
       <p
-        className="title-p"
+        className="title-p hover:cursor-pointer"
         onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}
       >
         {post.title}
@@ -76,22 +76,10 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
           box-shadow: 1px 1px 3px #aaa;
         }
 
-        .post-img {
-          height: 5.5rem;
-        }
-
-        .post-img:hover {
-          cursor: pointer;
-        }
-
         .title-p {
           font-weight: bold;
           font-size: 0.9rem;
           margin: 0;
-        }
-
-        .title-p:hover {
-          cursor: pointer;
         }
 
         .creator-pseudonym-small {
