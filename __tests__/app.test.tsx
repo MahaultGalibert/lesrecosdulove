@@ -3,8 +3,10 @@ import { describe, expect, it } from "vitest"
 import { render, screen, waitFor } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import Post from "../components/Post"
+import { useSession } from "next-auth/react"
 
 describe("Post", () => {
+  const { data: session } = useSession()
   it("should render posts", async () => {
     render(
       <Post
