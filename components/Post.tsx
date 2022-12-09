@@ -2,7 +2,6 @@ import React from "react"
 import Router from "next/router"
 import Tippy from "@tippyjs/react"
 import "tippy.js/dist/tippy.css"
-import { useSession } from "next-auth/react"
 import Upvote from "../components/Upvote"
 
 export type UserProps = {
@@ -24,10 +23,10 @@ export type PostProps = {
     likedBy: number
   }
   likedBy: [UserProps]
+  isLoggedIn: boolean
 }
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
-  const { data: session } = useSession()
   return (
     <div className="post-div">
       <img
@@ -64,7 +63,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
           width="13"
           height="13"
         ></img>
-        {session && <Upvote post={post} />}
+        {post.isLoggedIn && <Upvote post={post} />}
       </small>
       <style jsx>{`
         .post-div {

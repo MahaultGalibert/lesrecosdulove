@@ -1,7 +1,6 @@
 import React from "react"
 import Tippy from "@tippyjs/react"
 import "tippy.js/dist/tippy.css"
-import post from "../pages/api/post"
 
 const upvote = async (targetId: string) => {
     try {
