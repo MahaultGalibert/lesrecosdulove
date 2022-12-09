@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { describe, expect, it } from "vitest"
 import { render, screen, waitFor } from "@testing-library/react"
 import "@testing-library/jest-dom"
@@ -23,6 +23,7 @@ describe("Post", () => {
             likedBy: 1,
           },
           likedBy: [{ name: "Philippe Galibert" }],
+          isLoggedIn: true,
         }}
       />
     )

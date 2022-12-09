@@ -4,6 +4,7 @@ import Layout from "../components/Layout"
 import Post, { PostProps } from "../components/Post"
 // pages/index.tsx
 import prisma from "../lib/prisma"
+import { useSession } from "next-auth/react"
 
 // index.tsx
 export const getStaticProps: GetStaticProps = async () => {
@@ -31,6 +32,7 @@ type Props = {
 }
 
 const Blog: React.FC<Props> = (props) => {
+  const { data: session } = useSession()
   return (
     <Layout>
       <div className="page">
@@ -44,7 +46,7 @@ const Blog: React.FC<Props> = (props) => {
         <main id="feed-box-div">
           {props.feed.map((post) => (
             <div key={post.id} className="post-box-div">
-              <Post post={post} />
+              <Post post={{ ...post, isLoggedIn: !!session }} />
             </div>
           ))}
         </main>

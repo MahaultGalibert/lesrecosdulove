@@ -2,6 +2,7 @@ import React from "react"
 import Router from "next/router"
 import Tippy from "@tippyjs/react"
 import "tippy.js/dist/tippy.css"
+import Upvote from "../components/Upvote"
 
 export type UserProps = {
   name: string
@@ -22,6 +23,7 @@ export type PostProps = {
     likedBy: number
   }
   likedBy: [UserProps]
+  isLoggedIn: boolean
 }
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
@@ -61,6 +63,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
           width="13"
           height="13"
         ></img>
+        {post.isLoggedIn && <Upvote post={post} />}
       </small>
       <style jsx>{`
         .post-div {
