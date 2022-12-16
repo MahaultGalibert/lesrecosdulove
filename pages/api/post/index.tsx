@@ -13,7 +13,7 @@ export default async function handle(req, res) {
     const session = await getSession({ req })
     const result = await prisma.post.create({
       data: {
-        category: "Film",
+        category: category,
         title: title,
         author: author,
         imageUrl: imageUrl,

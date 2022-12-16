@@ -41,13 +41,23 @@ const Reco: React.FC<{ reco: RecoProps }> = ({ reco }) => {
       <div>
         <form onSubmit={submitData}>
           <h1 className="text-xl font-bold mb-4">Nouvelle reco</h1>
-          <input
-            disabled
-            onChange={(e) => setCategory(e.target.value)}
-            placeholder="Film"
-            type="mandatoryText"
+          <br />
+          <select
+            className="mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:border-black dark:focus:ring-blue-500 dark:focus:border-black"
             value={category}
-          />
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option disabled={true} value="">
+              Catégorie de Reco
+            </option>
+            <option value="film">Film</option>
+            <option value="serie">Série</option>
+            <option value="livre">Livre</option>
+            <option value="podcast">Podcast</option>
+            <option value="culture">Culture</option>
+            <option value="musique">Musique</option>
+            <option value="recette">Recette</option>
+          </select>
           <input
             autoFocus
             onChange={(e) => setTitle(e.target.value)}

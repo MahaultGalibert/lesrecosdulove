@@ -37,12 +37,12 @@ const upvote = async (targetId: string) => {
 }
 
 const Post: React.FC<PostProps> = (props) => {
-  let title = props.title
-
   return (
     <Layout>
       <div>
-        <h2 className="font-bold text-xl mb-1">{title}</h2>
+        <p className="">{props.category}</p>
+        <br />
+        <h2 className="font-bold text-xl mb-1">{props.title}</h2>
         <p className="mb-3">{props?.author}</p>
         <p className="text-sm">
           Proposé par <i>{props.creator.name}</i>
@@ -63,6 +63,7 @@ const Post: React.FC<PostProps> = (props) => {
         </button>
         <img className="mt-6 w-80" src={props.imageUrl}></img>
         <ReactMarkdown className="text-sm mt-4" children={props.comment} />
+        <br />
       </div>
       <style jsx>{`
         .page {
