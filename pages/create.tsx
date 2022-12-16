@@ -50,13 +50,13 @@ const Reco: React.FC<{ reco: RecoProps }> = ({ reco }) => {
             <option disabled={true} value="">
               Catégorie de Reco
             </option>
-            <option value="film">Film</option>
-            <option value="serie">Série</option>
-            <option value="livre">Livre</option>
-            <option value="podcast">Podcast</option>
-            <option value="culture">Culture</option>
-            <option value="musique">Musique</option>
-            <option value="recette">Recette</option>
+            <option value="Film">Film</option>
+            <option value="Série">Série</option>
+            <option value="Livre">Livre</option>
+            <option value="Podcast">Podcast</option>
+            <option value="Culture">Culture</option>
+            <option value="Musique">Musique</option>
+            <option value="Recette">Recette</option>
           </select>
           <input
             autoFocus

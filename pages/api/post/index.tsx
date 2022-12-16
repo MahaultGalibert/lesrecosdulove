@@ -8,7 +8,7 @@ import prisma from "../../../lib/prisma"
 // Optional fields in body: author, imageUrl, comment
 export default async function handle(req, res) {
   if (req.method === "POST") {
-    const { title, author, imageUrl, comment } = req.body
+    const { category, title, author, imageUrl, comment } = req.body
 
     const session = await getSession({ req })
     const result = await prisma.post.create({
