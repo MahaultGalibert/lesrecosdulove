@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { GetStaticProps } from "next"
 import Layout from "../components/Layout"
 import Post, { PostProps } from "../components/Post"
@@ -6,8 +6,12 @@ import Post, { PostProps } from "../components/Post"
 import prisma from "../lib/prisma"
 
 // index.tsx
+
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.post.findMany({
+    // where: {
+    //   category: filter,
+    // },
     include: {
       creator: {
         select: { name: true },
@@ -31,6 +35,8 @@ type Props = {
 }
 
 const Blog: React.FC<Props> = (props) => {
+  const [filter, setFilter] = useState("")
+
   return (
     <Layout>
       <div className="page">
@@ -41,6 +47,22 @@ const Blog: React.FC<Props> = (props) => {
           height="50"
         ></img>
         <h1 className="ml-4 mt-2 text-3xl font-bold">Les recos du love</h1>
+        <br />
+        <select
+          value={filter}
+          className="mb-1 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:border-black dark:focus:ring-blue-500 dark:focus:border-black"
+          onChange={(e) => setFilter(e.target.value)}
+        >
+          <option selected value="Film">
+            Films
+          </option>
+          <option value="Série">Séries</option>
+          <option value="Livre">Livres</option>
+          <option value="Podcast">Podcasts</option>
+          <option value="Culture">Culture</option>
+          <option value="Musique">Musique</option>
+          <option value="Recette">Recettes</option>
+        </select>
         <main id="feed-box-div">
           {props.feed.map((post) => (
             <div key={post.id} className="post-box-div">
@@ -65,7 +87,7 @@ const Blog: React.FC<Props> = (props) => {
         #feed-box-div {
           display: flex;
           flex-wrap: wrap;
-          margin: 3rem 10rem;
+          margin: 1rem 10rem;
           justify-content: space-evenly;
         }
       `}</style>
