@@ -4,6 +4,7 @@ import Layout from "../components/Layout"
 import Post, { PostProps } from "../components/Post"
 // pages/index.tsx
 import prisma from "../lib/prisma"
+import PostCatalog from "../components/PostCatalog"
 
 // index.tsx
 
@@ -36,7 +37,6 @@ type Props = {
 
 const Blog: React.FC<Props> = (props) => {
   const [filter, setFilter] = useState("")
-
   return (
     <Layout>
       <div className="page">
@@ -53,9 +53,7 @@ const Blog: React.FC<Props> = (props) => {
           className="mb-1 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:border-black dark:focus:ring-blue-500 dark:focus:border-black"
           onChange={(e) => setFilter(e.target.value)}
         >
-          <option selected value="Film">
-            Films
-          </option>
+          <option selected value="Film">Films</option>
           <option value="Série">Séries</option>
           <option value="Livre">Livres</option>
           <option value="Podcast">Podcasts</option>
@@ -63,6 +61,8 @@ const Blog: React.FC<Props> = (props) => {
           <option value="Musique">Musique</option>
           <option value="Recette">Recettes</option>
         </select>
+
+        <PostCatalog category="Livre" />
         <main id="feed-box-div">
           {props.feed.map((post) => (
             <div key={post.id} className="post-box-div">
