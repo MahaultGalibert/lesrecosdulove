@@ -4,6 +4,7 @@ import Layout from "../components/Layout"
 import Post, {PostProps} from "../components/Post"
 // pages/index.tsx
 import prisma from "../lib/prisma"
+import { useSession } from "next-auth/react"
 
 // index.tsx
 const postCategories = [
@@ -42,6 +43,7 @@ type Props = {
 }
 
 const Blog: React.FC<Props> = (props) => {
+  const { data: session } = useSession()
   const [selectedCategory, selectCategory] = useState(postCategories[0].value)
   return (
     <Layout>
