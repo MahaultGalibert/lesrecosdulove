@@ -40,8 +40,6 @@ const Post: React.FC<PostProps> = (props) => {
         <img className="mt-6 w-80" src={props.imageUrl}></img>
         <ReactMarkdown className="text-sm mt-4" children={props.comment} />
         <br />
-<<<<<<< HEAD
-=======
         <p className="text-sm">
           Cette reco a plu à :
           <small>
@@ -58,7 +56,6 @@ const Post: React.FC<PostProps> = (props) => {
             ))}
           </small>
         </p>
->>>>>>> main
       </div>
       <style jsx>{`
         .page {
