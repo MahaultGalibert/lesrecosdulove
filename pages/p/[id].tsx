@@ -27,12 +27,12 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 }
 
 const Post: React.FC<PostProps> = (props) => {
-  let title = props.title
-
   return (
     <Layout>
       <div>
-        <h2 className="font-bold text-xl mb-1">{title}</h2>
+        <p className="">{props.category}</p>
+        <br />
+        <h2 className="font-bold text-xl mb-1">{props.title}</h2>
         <p className="mb-3">{props?.author}</p>
         <p className="text-sm">
           Proposé par <i>{props.creator.name}</i>
