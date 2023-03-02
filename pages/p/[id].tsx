@@ -39,8 +39,8 @@ const Post: React.FC<PostProps> = (props) => {
         </p>
         <img className="mt-6 w-80" src={props.imageUrl}></img>
         <ReactMarkdown className="text-sm mt-4" children={props.comment} />
-        <br />
         <p className="text-sm">
+        <br />
           Cette reco a plu à :
           <small>
             {props.likedBy.map((x: { name: any }) => (
