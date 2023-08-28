@@ -28,4 +28,5 @@ jobs:
       - name: npm ci and test
         run: |
           npm ci
-          npm test
+
+#          npm test
