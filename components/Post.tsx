@@ -28,7 +28,7 @@ export type PostProps = {
 }
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
   return (
     <div className="post-div">
       <img
